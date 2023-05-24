@@ -9,6 +9,17 @@ const App = {
       notes: ["note 1", "note 2", "note 3"],
     };
   },
+  mounted() {
+    this.getNotes();
+  },
+  watch: {
+    notes: {
+      handler(updatedList) {
+        localStorage.setItem("notes", JSON.stringify(updatedList));
+      },
+      deep: true,
+    },
+  },
   methods: {
     onSubmit() {
       this.notes.push(this.input.value);
