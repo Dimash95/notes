@@ -21,6 +21,12 @@ const App = {
     },
   },
   methods: {
+    getNotes() {
+      const localNotes = localStorage.getItem("notes");
+      if (localNotes) {
+        this.notes = JSON.parse(localNotes);
+      }
+    },
     onSubmit() {
       this.notes.push(this.input.value);
       this.input.value = "";
